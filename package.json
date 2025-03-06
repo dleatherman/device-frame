@@ -1,0 +1,19 @@
+{
+	"name": "device-frame",
+	"version": "1.0.0",
+	"description": "A small themed zero-dependency Web Component for demos with a fake device frame",
+	"main": "device-frame.js",
+	"scripts": {
+		"start": "npx http-server ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dleatherman/device-frame.git"
+	},
+	"author": "Dan Leatherman <dleatherman@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/dleatherman/device-frame/issues"
+	},
+	"homepage": "https://github.com/dleatherman/device-frame#readme"
+}
