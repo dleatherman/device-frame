@@ -1,5 +1,5 @@
 {
-	"name": "device-frame",
+	"name": "@dleatherman/device-frame",
 	"version": "1.0.0",
 	"description": "A small themed zero-dependency Web Component for demos with a fake device frame",
 	"main": "device-frame.js",
