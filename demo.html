@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<title>Device Frame web component</title>
+		<style>
+		@media (prefers-color-scheme: dark) {
+			body {
+				background-color: #222;
+				color: #eee;
+			}
+		}
+		a[href] {
+			color: inherit;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		p:first-child {
+			margin-top: 0;
+		}
+		.demo-layout {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 3em 2em;
+			margin: 2em 0;
+		}
+		.demo-layout > * {
+			flex-basis: 20rem;
+		}
+		.demo-slider {
+			display: flex;
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scroll-behavior: smooth;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-color: rgb(0,0,0) rgba(0,0,0, 0.04);
+			-ms-overflow-style: none;
+			scrollbar-width: none;
+		}
+		.demo-slider > * {
+			scroll-snap-align: start;
+		}
+		</style>
+		<script type="module" src="./device-frame.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>Device Frame component</h1>
+		</header>
+		<main>
+			<div class="demo-layout">
+				<div>
+					<p>This is the default</p>
+					<device-frame>
+						This is a test
+					</device-frame>
+				</div>
+				<div>
+					<p>This one has a single image</p>
+					<device-frame>
+						<img src="/public/wallpaper1.png" width="308" height="660" alt="" />
+					</device-frame>
+				</div>
+				<div>
+					<p>This one has content within the safe area</p>
+					<device-frame mode="light" padded>
+						This is a test.
+					</device-frame>
+				</div>
+				<div>
+					<p>This one is in dark mode (and padded)</p>
+					<device-frame mode="dark" padded>
+						This is a test.
+					</device-frame>
+				</div>
+				<div>
+					<p>This one has images in a slider</p>
+					<device-frame>
+						<div class="demo-slider">
+							<img src="/public/wallpaper1.png" width="308" height="660" alt="" />
+							<img src="/public/wallpaper2.png" width="308" height="660" alt="" />
+							<img src="/public/wallpaper1.png" width="308" height="660" alt="" />
+							<img src="/public/wallpaper2.png" width="308" height="660" alt="" />
+						</div>
+					</device-frame>
+				</div>
+				<div>
+					<p>This one has an outer shadow</p>
+					<device-frame shadow>
+						This is a test.
+					</device-frame>
+				</div>
+				<div>
+					<p>This one has an iframe</p>
+					<device-frame>
+						<iframe src="https://example.com/" sandbox scrolling="no" style="pointer-events: none; width: 100%; height: 665px; border: none"></iframe>
+					</device-frame>
+				</div>
+				<div>
+					<p>This one is an android</p>
+					<device-frame brand="android">
+						This is a test
+					</device-frame>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
