@@ -56,60 +56,43 @@
 			<h1>Device Frame component</h1>
 		</header>
 		<main>
+			<p>Used in demos as a way to fake a iPhone or Pixel device frame. Go back to the <a href="https://github.com/dleatherman/device-frame">source code on GitHub</a>.</p>
 			<div class="demo-layout">
-				<div>
+				<device-frame>
 					<p>This is the default</p>
-					<device-frame>
-						This is a test
-					</device-frame>
-				</div>
-				<div>
-					<p>This one has a single image</p>
-					<device-frame>
-						<img src="./public/wallpaper1.png" width="308" height="660" alt="" />
-					</device-frame>
-				</div>
-				<div>
+				</device-frame>
+				<device-frame statusbar padded>
+					<p>This one doesn't have time or icons, but does have a home bar.</p>
+				</device-frame>
+				<device-frame footer="bar" padded>
+					<p>This one has a home button</p>
+					<img src="./public/wallpaper1.png" width="308" height="660" alt="" />
+				</device-frame>
+				<device-frame mode="light" padded>
 					<p>This one has content within the safe area</p>
-					<device-frame mode="light" padded>
-						This is a test.
-					</device-frame>
-				</div>
-				<div>
-					<p>This one is in dark mode (and padded)</p>
-					<device-frame mode="dark" padded>
-						This is a test.
-					</device-frame>
-				</div>
-				<div>
+				</device-frame>
+				<device-frame mode="dark" padded>
+					<p>This one is in dark mode</p>
+				</device-frame>
+				<device-frame padded>
 					<p>This one has images in a slider</p>
-					<device-frame>
-						<div class="demo-slider">
-							<img src="./public/wallpaper1.png" width="308" height="660" alt="" />
-							<img src="./public/wallpaper2.png" width="308" height="660" alt="" />
-							<img src="./public/wallpaper1.png" width="308" height="660" alt="" />
-							<img src="./public/wallpaper2.png" width="308" height="660" alt="" />
-						</div>
-					</device-frame>
-				</div>
-				<div>
+					<div class="demo-slider">
+						<img src="./public/wallpaper1.png" width="308" height="660" alt="" />
+						<img src="./public/wallpaper2.png" width="308" height="660" alt="" />
+						<img src="./public/wallpaper1.png" width="308" height="660" alt="" />
+						<img src="./public/wallpaper2.png" width="308" height="660" alt="" />
+					</div>
+				</device-frame>
+				<device-frame padded shadow>
 					<p>This one has an outer shadow</p>
-					<device-frame shadow>
-						This is a test.
-					</device-frame>
-				</div>
-				<div>
+				</device-frame>
+				<device-frame padded>
 					<p>This one has an iframe</p>
-					<device-frame>
-						<iframe src="https://example.com/" sandbox scrolling="no" style="pointer-events: none; width: 100%; height: 665px; border: none"></iframe>
-					</device-frame>
-				</div>
-				<div>
-					<p>This one is an android</p>
-					<device-frame brand="android">
-						This is a test
-					</device-frame>
-				</div>
+					<iframe src="https://example.com/" sandbox scrolling="no" style="pointer-events: none; width: 100%; height: 665px; border: none"></iframe>
+				</device-frame>
+				<device-frame model="pixel" padded>
+					<p>This one is an android (and padded)</p>
+				</device-frame>
 			</div>
 		</main>
 	</body>
