@@ -8,6 +8,7 @@ class DeviceFrame extends HTMLElement {
 		statusbar: "statusbar",
 		padded: "padded",
 		shadow: "shadow",
+		theme: "theme",
 		time: "time",
 	};
 
@@ -41,6 +42,9 @@ class DeviceFrame extends HTMLElement {
 	--df-padding-start: 3rem;
 	--df-padding-end: 1rem;
 }
+:host([${DeviceFrame.attrs.padded}=top]) {
+	--df-padding-end: 0;
+}
 :host([${DeviceFrame.attrs.model}="pixel"]) .device {
 	--df-aspect-ratio: 9/19.5;
 	--df-camera-size: 1.2rem;
@@ -61,6 +65,7 @@ class DeviceFrame extends HTMLElement {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: auto 1fr;
 	overflow: hidden;
+	position: relative;
 }
 :host([${DeviceFrame.attrs.shadow}]) .device {
 	/* via https://www.joshwcomeau.com/shadow-palette/ */
@@ -127,7 +132,6 @@ class DeviceFrame extends HTMLElement {
 	grid-area: hed-left / hed-left / footer / span 3;
 	overflow: auto;
 	padding: var(--df-padding-start) var(--df-outer-bezel) var(--df-padding-end);
-	position: relative;
 	scrollbar-width: none;
 }
 .main::-webkit-scrollbar {
@@ -148,18 +152,26 @@ class DeviceFrame extends HTMLElement {
 .main > ::slotted(iframe:only-child) {
 	display: flex;
 }
-:host([${DeviceFrame.attrs.footer}="bar"]) .main::after {
+:host([${DeviceFrame.attrs.theme}]) .main::before {
+	background: var(--df-theme);
+	content: '';
+	height: var(--df-padding-start);
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+:host([${DeviceFrame.attrs.footer}="bar"]) .device::after {
 	background-color: var(--df-island-bg);
 	border-radius: var(--df-camera-size);
 	content: '';
-	bottom: calc(var(--df-camera-size) * -.8);
+	bottom: calc(var(--df-camera-size) * .5);
 	display: block;
 	height: calc(var(--df-camera-size) * .44);
 	left: 0;
 	opacity: .6;
 	margin-inline: auto;
 	right: 0;
-	position: sticky;
+	position: absolute;
 	width: 44%;
 	z-index: 1;
 }
@@ -193,9 +205,12 @@ class DeviceFrame extends HTMLElement {
 
 		let model = this.getAttribute(DeviceFrame.attrs.model) || "iphone";
 		let time = this.getAttribute(DeviceFrame.attrs.time) || "9:41";
+		let theme = this.getAttribute(DeviceFrame.attrs.theme);
 
 		template.innerHTML = `
-		<div class="device ${model}">
+		<div class="device ${model}" ${
+			theme !== null ? `style="--df-theme: ${theme};"` : ``
+		}>
 			<div class="hed">
 				<div class="hed-left">${time}</div>
 				<div class="hed-island"></div>
