@@ -81,6 +81,9 @@ class DeviceFrame extends HTMLElement {
 :host([${DeviceFrame.attrs.statusbar}]) .hed-right {
 	display: none;
 }
+:host([${DeviceFrame.attrs.statusbar}="none"]) .hed {
+	display: none;
+}
 :host([${DeviceFrame.attrs.statusbar}]) .hed {
 	grid-area: hed-center;
 	grid-template-columns: auto;
